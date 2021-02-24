@@ -8,4 +8,4 @@ const userController = new UserController
 // users
 router.post('/users', userController.create)
 
-export default router
+export { router }
