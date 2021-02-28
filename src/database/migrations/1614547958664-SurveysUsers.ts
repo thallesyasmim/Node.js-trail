@@ -35,13 +35,17 @@ export class SurveysUsers1614547958664 implements MigrationInterface {
                     name: 'FKUsers',
                     referencedTableName: 'users',
                     referencedColumnNames: ['id'],
-                    columnNames: ['user_id']
+                    columnNames: ['user_id'],
+                    onDelete: 'CASCADE',
+                    onUpdate: 'CASCADE'
                 },
                 {
                     name: 'FKSurvey',
                     referencedTableName: 'surveys',
                     referencedColumnNames: ['id'],
-                    columnNames: ['survey_id']
+                    columnNames: ['survey_id'],
+                    onDelete: 'CASCADE',
+                    onUpdate: 'CASCADE'
                 }
             ]
         }))
