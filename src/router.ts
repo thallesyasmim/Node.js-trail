@@ -12,5 +12,6 @@ router.post('/users', userController.create)
 
 // Surveys
 router.post('/surveys', surveyController.create)
+router.get('/surveys', surveyController.index)
 
 export { router }
