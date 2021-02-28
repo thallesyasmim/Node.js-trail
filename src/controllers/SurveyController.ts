@@ -23,6 +23,20 @@ class SurveyController {
         }
     }
 
+
+    async index(request: Request, response: Response) {
+        try {
+            const surveyRepository = getCustomRepository(SurveysRepository)
+
+            const surveys = await surveyRepository.find()
+
+            return response.json(surveys)
+        } catch (error) {
+            console.error(error)
+            return response.json(error)
+        }
+    }
+
 }
 
 export { SurveyController }
