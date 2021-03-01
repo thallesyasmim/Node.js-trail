@@ -12,14 +12,8 @@ class SurveyController {
             description: yup.string().required()
         })
 
-        if(!(await schema.isValid(request.body))) {
-            return response.status(400).json({
-                error: 'Validation Failed'
-            })
-        }
-
-
         try {
+            await schema.validate(request.body, { abortEarly: false })            
 
             const surveyRepository = getCustomRepository(SurveysRepository)
 
@@ -46,8 +40,7 @@ class SurveyController {
 
             return response.json(surveys)
         } catch (error) {
-            console.error(error)
-            return response.json(error)
+            return response.status(400).json(error)
         }
     }
 

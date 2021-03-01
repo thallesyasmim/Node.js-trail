@@ -16,14 +16,9 @@ class SendMailController {
             survey_id: yup.string().required()
         })
 
-        if(!(await schema.isValid(request.body))) {
-            return response.status(400).json({
-                error: 'Validation Failed'
-            })
-        }
-
-
         try {
+            await schema.validate(request.body, { abortEarly: false })            
+
             const usersRepository = getCustomRepository(UsersRepository)
             const surveysRepository = getCustomRepository(SurveysRepository)
             const surveysUsersRepository = getCustomRepository(SurveysUsersRepository)
@@ -92,8 +87,7 @@ class SendMailController {
 
 
         } catch (error) {
-            console.error(error)
-            return error
+            return response.status(400).json(error)
         }
     }
 }
