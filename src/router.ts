@@ -22,6 +22,6 @@ router.get('/surveys', surveyController.index)
 router.post('/sendMail', sendMailController.execute)
 
 // Answers
-router.get('/answers', answerController.execute)
+router.get('/answers/:value', answerController.execute)
 
 export { router }
