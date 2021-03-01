@@ -5,10 +5,24 @@ import { SurveysUsersRepository } from '../repositories/SurveysUsersRepository'
 import { UsersRepository } from '../repositories/UsersRepository';
 import SendMailService from '../services/SendMailService';
 import { resolve } from 'path'
+import * as yup from 'yup'
 
 class SendMailController {
     async execute(request: Request, response: Response) {
         const { email, survey_id } = request.body
+
+        const schema = yup.object().shape({
+            email: yup.string().email().required(),
+            survey_id: yup.string().required()
+        })
+
+        if(!(await schema.isValid(request.body))) {
+            return response.status(400).json({
+                error: 'Validation Failed'
+            })
+        }
+
+
         try {
             const usersRepository = getCustomRepository(UsersRepository)
             const surveysRepository = getCustomRepository(SurveysRepository)
