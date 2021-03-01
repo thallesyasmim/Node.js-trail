@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import { getCustomRepository } from 'typeorm'
 import { SurveysRepository } from '../repositories/SurveysRepository'
 import * as yup from 'yup'
+import { AppError } from '../errors/AppError'
 
 class SurveyController {
     async create(request: Request, response: Response) {
@@ -26,8 +27,7 @@ class SurveyController {
 
             return response.status(201).json(survey)
         } catch (error) {
-            console.error(error)
-            return response.json(error)
+            throw new AppError(error)
         }
     }
 
@@ -40,7 +40,7 @@ class SurveyController {
 
             return response.json(surveys)
         } catch (error) {
-            return response.status(400).json(error)
+            throw new AppError(error)
         }
     }
 

@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { getCustomRepository, IsNull, Not } from "typeorm";
+import { AppError } from "../errors/AppError";
 import { SurveysUsersRepository } from "../repositories/SurveysUsersRepository";
 
 
@@ -32,8 +33,7 @@ class NpsController {
             })
 
         } catch (error) {
-            console.error(error)
-            return response.json(error)
+            throw new AppError(error)
         }
     }
 }
