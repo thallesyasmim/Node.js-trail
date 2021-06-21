@@ -32,7 +32,7 @@ Web application with calculation of the Net Promoter Score.
 1. Clone the repository:
 
 ```sh
-  $ git clone https://github.com/thallesyasmim/Node.js-trail.git
+  $ git clone https://github.com/thallesyasmim/NPS-Calculation.git
 ```
 
 2. Running the application:
