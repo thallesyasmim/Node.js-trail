@@ -32,7 +32,7 @@ Web application with calculation of the Notion Promoter Score.
 1. Clone the repository:
 
 ```sh
-  $ git clone https://github.com/thallesyasmim/RNode.js-trail.git
+  $ git clone https://github.com/thallesyasmim/Node.js-trail.git
 ```
 
 2. Running the application:
