@@ -13,7 +13,7 @@
 
 ## :bookmark: About
   
-Web application with calculation of the Notion Promoter Score.
+Web application with calculation of the Net Promoter Score.
 
 ## :rocket: Technologies
 
